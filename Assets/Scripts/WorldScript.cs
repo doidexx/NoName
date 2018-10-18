@@ -1,0 +1,36 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class WorldScript : MonoBehaviour {
+    public GameObject[] prefabs;
+
+	public int worldLenght;
+    public static int load;
+    public float distance;
+	// Use this for initialization
+	void Start () {
+        distance = 44.5f;
+        load = 4;
+        for (int i = 0; i < 5; i++)
+        {
+            if (i < 3){
+                Instantiate(prefabs[0], new Vector3(0, 0, i * distance), Quaternion.identity);
+            }
+            if (i == 3) {
+                Instantiate(prefabs[11], new Vector3(0, 0, i * distance), Quaternion.identity);
+            }
+            if (i == 4){
+                Instantiate(prefabs[Random.Range(1,11)], new Vector3(0, 0, i * distance), Quaternion.identity);
+            }
+        }
+		//worldLenght = 60;
+		//for (int i = 0; i < worldLenght; i++){
+  //          Instantiate(prefabs[Random.Range(-0,11)], new Vector3 (0, 0, i * 30f), Quaternion.identity);
+		//}
+	}
+	
+	// Update is called once per frame
+    void Update () {
+	}
+}
