@@ -51,8 +51,7 @@ public class PlayerBehavior : MonoBehaviour {
 		WallRunController();
 		SlideController();
 		// Constant Movement forward
-		transform.Translate(Vector3.forward * (Time.deltaTime * speed), Space.World);
-
+		transform.Translate(Vector3.forward * speed * Time.deltaTime, Space.World);
 	}
 	void OnTriggerEnter (Collider other) {
 		// collide with obstacles
@@ -70,7 +69,7 @@ public class PlayerBehavior : MonoBehaviour {
 				grabUp = true;
 			}
 			if (grabUp){
-				transform.position += new Vector3 (0, 3, 0);
+				transform.position = new Vector3 (transform.position.x, 3, transform.position.z);
 			}
 		}
 	}
@@ -136,8 +135,11 @@ public class PlayerBehavior : MonoBehaviour {
 			rb.drag = 0f;
 		}
 		//dying by falling.
-		if (transform.position.y <= -1){
+		if (transform.position.y <= -6){
 			fall = true;
+            transform.position = new Vector3(0, 3, -7.1f);
+		} else {
+			fall = false;
 		}
 	}
 
