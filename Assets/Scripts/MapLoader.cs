@@ -5,17 +5,10 @@ using UnityEngine;
 public class MapLoader : MonoBehaviour {
 
 	public GameObject[] prefabs;
-    public bool loading;
     public Vector3 smooth;
 	// Use this for initialization
     void Start(){
         
-    }
-	
-    void FixedUpdate () {
-        
-        if (loading) {
-        }
     }
 	// Update is called once per frame
 	private void OnTriggerEnter (Collider other)
@@ -23,7 +16,7 @@ public class MapLoader : MonoBehaviour {
         Debug.Log("On Trigger Enter");
         if (other.gameObject.name.Equals("Player") && WorldScript.load < 20){
 			WorldScript.load++;
-            Instantiate(prefabs[Random.Range(1,11)], new Vector3(0, -20, WorldScript.load * 44.5f), Quaternion.identity);
+            Instantiate(prefabs[Random.Range(1,11)], new Vector3(0, 0, WorldScript.load * 44.5f), Quaternion.identity);
             Destroy(this.gameObject);
         }
         if (WorldScript.load == 20) {

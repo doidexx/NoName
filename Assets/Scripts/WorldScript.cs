@@ -24,10 +24,6 @@ public class WorldScript : MonoBehaviour {
                 Instantiate(prefabs[Random.Range(1,11)], new Vector3(0, 0, i * distance), Quaternion.identity);
             }
         }
-		//worldLenght = 60;
-		//for (int i = 0; i < worldLenght; i++){
-  //          Instantiate(prefabs[Random.Range(-0,11)], new Vector3 (0, 0, i * 30f), Quaternion.identity);
-		//}
 	}
 	
 	// Update is called once per frame
