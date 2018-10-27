@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerS : MonoBehaviour {
 
 	private Rigidbody rb;
+	private GameObject seek;
 	public float speed, tspeed, gravForce, jumpForce, orH, slideT, jumpT;
 	public bool movLeft, movRight, jumping, slide, onTheFloor, wallRuning;
 
@@ -15,6 +16,7 @@ public class PlayerS : MonoBehaviour {
 		tspeed = 5f;
 		gravForce = 20f;
 		jumpForce = 40f;
+		seek = GameObject.Find("Seeker");
 		rb = GetComponent<Rigidbody>();
 		orH = transform.lossyScale.y;
 		slideH = new Vector3(transform.lossyScale.x, 2.0f, transform.lossyScale.z);
@@ -77,6 +79,8 @@ public class PlayerS : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
+		// Seeker always following
+		seek.GetComponent<Rigidbody>().MovePosition(seek.transform.position + seek.transform.forward * (Time.deltaTime * speed));
 		//Constantly moving forward
 		rb.MovePosition(transform.position + transform.forward * (Time.deltaTime * speed));
         //Gravity
@@ -116,6 +120,24 @@ public class PlayerS : MonoBehaviour {
             gravForce = 4f;
 			Debug.Log("wall runing");
 		}
+	}
+	void OnTriggerEnter(Collider other){
+        if (other.gameObject == seek) {
+            // add scene controller here
+			//////////////////////////////
+			/////////////////////////////
+			//////////////////////////////
+			//////////////////////////////
+			// losing/worst case scenario
+        }
+		if (other.gameObject.tag == "portal") {
+            // add scene controller here
+            //////////////////////////////
+            /////////////////////////////
+            //////////////////////////////
+            //////////////////////////////
+            // winning/good desition making scenario
+        }
 	}
 
 	void OnTriggerExit(Collider other) {

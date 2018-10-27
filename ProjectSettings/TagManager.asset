@@ -11,6 +11,7 @@ TagManager:
   - table
   - locker
   - empty
+  - portal
   layers:
   - Default
   - TransparentFX
