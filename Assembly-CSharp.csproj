@@ -55,7 +55,6 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Cam.cs" />
      <Compile Include="Assets\Scripts\MapLoader.cs" />
-     <Compile Include="Assets\Scripts\PlayerBehavior.cs" />
      <Compile Include="Assets\Scripts\PlayerS.cs" />
      <Compile Include="Assets\Scripts\WorldScript.cs" />
  <Reference Include="UnityEditor.StandardEvents">

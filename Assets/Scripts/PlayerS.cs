@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerS : MonoBehaviour {
 
@@ -76,6 +77,10 @@ public class PlayerS : MonoBehaviour {
             slide = false;
             slideT = 0;
         }
+		// Player fall off the map
+		if (transform.position.y < -13) {
+        	SceneManager.LoadScene(2);
+		}
 	}
 
 	void FixedUpdate () {
@@ -123,20 +128,12 @@ public class PlayerS : MonoBehaviour {
 	}
 	void OnTriggerEnter(Collider other){
         if (other.gameObject == seek) {
-            // add scene controller here
-			//////////////////////////////
-			/////////////////////////////
-			//////////////////////////////
-			//////////////////////////////
 			// losing/worst case scenario
+			SceneManager.LoadScene(2);
         }
 		if (other.gameObject.tag == "portal") {
             // add scene controller here
-            //////////////////////////////
-            /////////////////////////////
-            //////////////////////////////
-            //////////////////////////////
-            // winning/good desition making scenario
+            SceneManager.LoadScene(3);
         }
 	}
 
