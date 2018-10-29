@@ -8,11 +8,11 @@ public class PlayerS : MonoBehaviour {
 	private Rigidbody rb;
 	private GameObject seek;
 	public float speed, tspeed, gravForce, jumpForce, orH, slideT, jumpT;
-	public bool movLeft, movRight, jumping, slide, onTheFloor, wallRuning;
+	public bool movLeft, movRight, jumping, slide, onTheFloor, wallRuning, center, right, left;
 
 	private Vector3 slideH;
 	// Use this for initialization
-	void Start () {
+    void Start () {
 		speed = 40f;
 		tspeed = 5f;
 		gravForce = 20f;
@@ -81,6 +81,18 @@ public class PlayerS : MonoBehaviour {
 		if (transform.position.y < -13) {
         	SceneManager.LoadScene(2);
 		}
+        // Making the player stop at the center track
+        if (transform.position.x > -0.5f && transform.position.x < 0.5f && !center){
+            movRight = false;
+            movLeft = false;
+            center = true;
+        }
+        if (center && !movLeft && !movRight) {
+            transform.position = new Vector3(0, transform.position.y, transform.position.z);
+        }
+        if (transform.position.x >= 2 || transform.position.x <= -2){
+            center = false;
+        }
 	}
 
 	void FixedUpdate () {
@@ -91,8 +103,8 @@ public class PlayerS : MonoBehaviour {
         //Gravity
         rb.AddForce(Vector3.down * gravForce);
 		//Moving to the left;
-		if (movLeft) {
-			rb.AddForce(Vector3.left * tspeed, ForceMode.VelocityChange);
+        if (movLeft) {
+            rb.AddForce(Vector3.left * tspeed, ForceMode.VelocityChange);
 		}
 		//Moving to the right
 		if (movRight) {
