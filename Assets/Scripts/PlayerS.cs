@@ -24,73 +24,88 @@ public class PlayerS : MonoBehaviour {
 	}
 
     // Update is called once per frame
-    void Update() {
-		//Getting Controll Key
-        if (Input.GetKeyDown(KeyCode.A) && !movRight){
+    void Update() {//Getting Controll Key
+        if (Input.GetKeyDown(KeyCode.A) && !movRight)
+        {
             movLeft = true;
         }
-        if (Input.GetKeyDown(KeyCode.D) && !movLeft){
+        if (Input.GetKeyDown(KeyCode.D) && !movLeft)
+        {
             movRight = true;
         }
-		//jumping
-		if (Input.GetKeyDown(KeyCode.Space) && onTheFloor) {
-			jumping = true;
-		}
-		//sliding
-		if (Input.GetKeyDown(KeyCode.S)) {
-			slide = true;
-			wallRuning = false;
-		}
-		//wallruning
-		if (Input.GetKey(KeyCode.W) && !slide) {
-			Debug.Log(wallRuning);
-			wallRuning = true;
-		}
-		if (Input.GetKeyUp(KeyCode.W)) {
-			wallRuning = false;
+        //jumping
+        if (Input.GetKeyDown(KeyCode.Space) && onTheFloor)
+        {
+            jumping = true;
+        }
+        //sliding
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            slide = true;
+            wallRuning = false;
+        }
+        //wallruning
+        if (Input.GetKey(KeyCode.W) && !slide)
+        {
             Debug.Log(wallRuning);
-		}
-		// Detecting when there is no floor contact
-		if (jumpT >= 0.4f) {
-			jumpT = 0;
-			jumping = false;
-		}
-		// Limitting jumping air time
-		if (jumping){
-			jumpT += Time.deltaTime;
-		}
+            wallRuning = true;
+        }
+        if (Input.GetKeyUp(KeyCode.W))
+        {
+            wallRuning = false;
+            Debug.Log(wallRuning);
+        }
+        // Detecting when there is no floor contact
+        if (jumpT >= 0.4f)
+        {
+            jumpT = 0;
+            jumping = false;
+        }
+        // Limitting jumping air time
+        if (jumping)
+        {
+            jumpT += Time.deltaTime;
+        }
         // Limitting the movement to the left
-        if (transform.position.x <= -5) {
+        if (transform.position.x <= -5)
+        {
             transform.position = new Vector3(-5, transform.position.y, transform.position.z);
             movLeft = false;
         }
         // Limitting the movement to the right
-        if (transform.position.x >= 5) {
+        if (transform.position.x >= 5)
+        {
             transform.position = new Vector3(5, transform.position.y, transform.position.z);
             movRight = false;
         }
         // Getting out of sliding
-        if (transform.localScale == slideH) {
+        if (transform.localScale == slideH)
+        {
             slideT += Time.deltaTime;
         }
-        if (slideT >= 0.15f) {
+        if (slideT >= 0.15f)
+        {
             slide = false;
             slideT = 0;
         }
-		// Player fall off the map
-		if (transform.position.y < -13) {
-        	SceneManager.LoadScene(2);
-		}
+        // Player fall off the map
+        if (transform.position.y < -13)
+        {
+            SceneManager.LoadScene(2);
+        }
         // Making the player stop at the center track
-        if (transform.position.x > -0.5f && transform.position.x < 0.5f && !center){
+        if (transform.position.x > -0.5f && transform.position.x < 0.5f && !center)
+        {
             movRight = false;
             movLeft = false;
             center = true;
         }
-        if (center && !movLeft && !movRight) {
+        if (center && !movLeft && !movRight)
+        {
             transform.position = new Vector3(0, transform.position.y, transform.position.z);
         }
-        if (transform.position.x >= 2 || transform.position.x <= -2){
+        if (transform.position.x >= 2 || transform.position.x <= -2)
+        {
             center = false;
         }
 	}
