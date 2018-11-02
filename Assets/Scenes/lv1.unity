@@ -3020,7 +3020,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: da1e0e5ebdbd18049beecc170a723fff, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5429,6 +5429,9 @@ MonoBehaviour:
   slide: 0
   onTheFloor: 0
   wallRuning: 0
+  center: 0
+  right: 0
+  left: 0
 --- !u!1 &795934518
 GameObject:
   m_ObjectHideFlags: 0
