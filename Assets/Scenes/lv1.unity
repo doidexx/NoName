@@ -412,7 +412,7 @@ GameObject:
   - component: {fileID: 50409358}
   m_Layer: 0
   m_Name: Loader (3)
-  m_TagString: Untagged
+  m_TagString: loader
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1873,7 +1873,7 @@ GameObject:
   - component: {fileID: 183554025}
   m_Layer: 0
   m_Name: Loader (7)
-  m_TagString: Untagged
+  m_TagString: loader
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5416,6 +5416,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2931e45afdafdba429f71b53c2afd1c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefabs:
+  - {fileID: 93414277}
+  - {fileID: 1716159056}
+  - {fileID: 2055929587}
+  - {fileID: 539977767}
+  - {fileID: 1677585299}
+  - {fileID: 749018968}
+  - {fileID: 379538761}
+  - {fileID: 310383370}
+  - {fileID: 1225157372}
+  - {fileID: 1119798747}
+  - {fileID: 60137176}
+  - {fileID: 1970699506}
+  - {fileID: 1816592121}
   speed: 0
   tspeed: 0
   gravForce: 0
@@ -5423,15 +5437,6 @@ MonoBehaviour:
   orH: 0
   slideT: 0
   jumpT: 0
-  movLeft: 0
-  movRight: 0
-  jumping: 0
-  slide: 0
-  onTheFloor: 0
-  wallRuning: 0
-  center: 0
-  right: 0
-  left: 0
 --- !u!1 &795934518
 GameObject:
   m_ObjectHideFlags: 0
@@ -5801,7 +5806,7 @@ GameObject:
   - component: {fileID: 814709424}
   m_Layer: 0
   m_Name: Loader (5)
-  m_TagString: Untagged
+  m_TagString: loader
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6296,7 +6301,7 @@ GameObject:
   - component: {fileID: 869408094}
   m_Layer: 0
   m_Name: Loader (1)
-  m_TagString: Untagged
+  m_TagString: loader
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8182,7 +8187,7 @@ GameObject:
   - component: {fileID: 1078997919}
   m_Layer: 0
   m_Name: Loader (2)
-  m_TagString: Untagged
+  m_TagString: loader
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10122,7 +10127,7 @@ GameObject:
   - component: {fileID: 1395616653}
   m_Layer: 0
   m_Name: Loader (10)
-  m_TagString: Untagged
+  m_TagString: loader
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10506,7 +10511,7 @@ GameObject:
   - component: {fileID: 1450406763}
   m_Layer: 0
   m_Name: Loader (8)
-  m_TagString: Untagged
+  m_TagString: loader
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10618,7 +10623,7 @@ GameObject:
   - component: {fileID: 1455673131}
   m_Layer: 0
   m_Name: Loader (6)
-  m_TagString: Untagged
+  m_TagString: loader
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12407,7 +12412,7 @@ GameObject:
   - component: {fileID: 1686127948}
   m_Layer: 0
   m_Name: Loader (9)
-  m_TagString: Untagged
+  m_TagString: loader
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12604,7 +12609,7 @@ GameObject:
   - component: {fileID: 1707606477}
   m_Layer: 0
   m_Name: Loader (10)
-  m_TagString: Untagged
+  m_TagString: loader
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14551,7 +14556,7 @@ GameObject:
   - component: {fileID: 2099953647}
   m_Layer: 0
   m_Name: Loader (4)
-  m_TagString: Untagged
+  m_TagString: loader
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

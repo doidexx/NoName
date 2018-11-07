@@ -12,6 +12,7 @@ TagManager:
   - locker
   - empty
   - portal
+  - loader
   layers:
   - Default
   - TransparentFX

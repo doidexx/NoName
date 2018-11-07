@@ -6,11 +6,12 @@ public class WorldScript : MonoBehaviour {
     public GameObject[] prefabs;
 
 	public int worldLenght;
-    public static int load;
+    public static int load, lenght;
     public float distance;
 	// Use this for initialization
 	void Start () {
-        distance = 44.5f;
+        distance = 44.3f;
+        lenght = 35;
         load = 4;
         for (int i = 0; i < 5; i++)
         {
