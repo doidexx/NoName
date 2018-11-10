@@ -15,6 +15,6 @@ public class Cam : MonoBehaviour {
 	void FixedUpdate () {
 		// Camera follows the player
 		transform.position = Vector3.Lerp(transform.position ,new Vector3(0, offsetY, target.position.z - offsetZ), 0.5f);
-		transform.LookAt(target);
+		transform.LookAt(target.position);
 	}
 }

@@ -13,6 +13,7 @@ TagManager:
   - empty
   - portal
   - loader
+  - player
   layers:
   - Default
   - TransparentFX
