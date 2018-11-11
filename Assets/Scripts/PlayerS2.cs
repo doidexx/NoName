@@ -10,7 +10,7 @@ public class PlayerS2 : MonoBehaviour {
 	private Animator playerAni;
 	public float speed, jumpSpeed, timer, jumpT, grav, l, c, r;
 	private int jumpNum;
-	private bool sliding, jumping, falling, movingR, movingL, onFloor, land, leftT, rightT, centerT, canMove;
+	public bool sliding, jumping, falling, movingR, movingL, onFloor, land, leftT, rightT, centerT, canMove;
 	// Use this for initialization
 	void Start () {
 		clone =  null;
@@ -70,51 +70,59 @@ public class PlayerS2 : MonoBehaviour {
             movingL = true;
         }
 		////////////////////////////////////Stopping on the Center Track///////////////////////////////////////
-		if ((movingR || movingL) && !canMove) {
-			if (transform.position.x <= c + 0.5f && transform.position.x >= c - 0.5f) {
-				centerT = true;
+		// if ((movingR || movingL) && !canMove) {
+		// 	if (transform.position.x <= c + 0.5f && transform.position.x >= c - 0.5f) {
+		// 		centerT = true;
+        //         movingR = false;
+        //         movingL = false;
+		// 	}
+		// }
+		// if (centerT) {
+        //     transform.position = new Vector3(c, transform.position.y, transform.position.z);
+		// 	canMove = true;
+        //     rightT = false;
+        //     leftT = false;
+		// 	Debug.Log("at center");
+		// }
+		// if (canMove) {
+		// 	centerT = false;
+		// }
+		// ////////////////////////////////////Stopping on the Right Track/////////////////////////////////////////
+		// if (movingR && !rightT) {
+		// 	leftT = false;
+			if (transform.position.x >= r - 0.2f) {
                 movingR = false;
-                movingL = false;
+				centerT = false;
 			}
-		}
-		if (centerT) {
-            transform.position = new Vector3(c, transform.position.y, transform.position.z);
-			canMove = true;
-            rightT = false;
-            leftT = false;
-			Debug.Log("at center");
-		}
-		if (canMove) {
-			centerT = false;
-		}
-		////////////////////////////////////Stopping on the Right Track/////////////////////////////////////////
-		if (movingR && !rightT) {
-			leftT = false;
-			if (transform.position.x >= r) {
-                movingR = false;
-				rightT = true;
+		// }
+			if (transform.position.x >= c - 0.2f && transform.position.x <= c + 0.2f) {
+				movingR = false;
+				movingL = false;
+				canMove = true;
 			}
-		}
-		if (rightT) {
-            transform.position = new Vector3(r, transform.position.y, transform.position.z);
-			canMove = false;
-            centerT = false;
-            Debug.Log("right");
-        }
-		////////////////////////////////////Stopping on the Left Track/////////////////////////////////////////
-        if (movingL && !leftT) {
-			rightT = false;
-            if (transform.position.x <= l) {
+			if (rightT || leftT) {
+				canMove = false;
+			}
+		// if (rightT) {
+        //     transform.position = new Vector3(r, transform.position.y, transform.position.z);
+		//		canMove = false;
+        //     centerT = false;
+        //     Debug.Log("right");
+        // }
+		// ////////////////////////////////////Stopping on the Left Track/////////////////////////////////////////
+        // if (movingL && !leftT) {
+		// 	rightT = false;
+            if (transform.position.x <= l + 0.2f) {
                 movingL = false;
-                leftT = true;
+				centerT = false;
             }
-        }
-        if (leftT) {
-            transform.position = new Vector3(l, transform.position.y, transform.position.z);
-            canMove = false;
-            centerT = false;
-            Debug.Log("left");
-        }
+        // }
+        // if (leftT) {
+        //     transform.position = new Vector3(l, transform.position.y, transform.position.z);
+        //     canMove = false;
+        //     centerT = false;
+        //     Debug.Log("left");
+        // }
 		///////////////////////////////////Landing After Jumping///////////////////////////////////////////////
 		if (land) {
             playerAni.SetInteger("state", 4);
@@ -167,11 +175,29 @@ public class PlayerS2 : MonoBehaviour {
 	void FixedUpdate() {
 		//////////////////////////////////Moving Right/////////////////////////////////////////////////
         if (movingR) {
-            playerRB.velocity += Vector3.right * 3;
-        }
+			if (centerT) {
+            	playerRB.transform.position = new Vector3(Mathf.Lerp(transform.position.x, r, 0.125f), transform.position.y, transform.position.z);
+				rightT = true;
+				leftT = false;
+            }
+			if (leftT) {
+                playerRB.transform.position = new Vector3(Mathf.Lerp(transform.position.x, c, 0.125f), transform.position.y, transform.position.z);
+                centerT = true;
+				rightT = false;
+			}
+		}
 		//////////////////////////////////Moving Left/////////////////////////////////////////////////
         if (movingL) {
-            playerRB.velocity += Vector3.left * 3;
+			if (centerT) {
+                playerRB.transform.position = new Vector3(Mathf.Lerp(transform.position.x, l, 0.125f), transform.position.y, transform.position.z);
+				leftT = true;
+				rightT = false;
+			}
+            if (rightT) {
+                playerRB.transform.position = new Vector3(Mathf.Lerp(transform.position.x, c, 0.125f), transform.position.y, transform.position.z);
+                centerT = true;
+				leftT = false;
+			}
         }
         ///////////////////////////////Constant Movement Forward///////////////////////////////////////
         playerRB.MovePosition(playerRB.transform.position += Vector3.forward * speed * Time.deltaTime);

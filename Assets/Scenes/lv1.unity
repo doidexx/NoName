@@ -8697,6 +8697,17 @@ MonoBehaviour:
   l: 0
   c: 0
   r: 0
+  sliding: 0
+  jumping: 0
+  falling: 0
+  movingR: 0
+  movingL: 0
+  onFloor: 0
+  land: 0
+  leftT: 0
+  rightT: 0
+  centerT: 0
+  canMove: 0
 --- !u!1 &1202476061
 GameObject:
   m_ObjectHideFlags: 0
@@ -11008,7 +11019,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: fff9722972659fb408b02ed1d8bf4fef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.00000091115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fff9722972659fb408b02ed1d8bf4fef, type: 3}
       propertyPath: m_LocalPosition.y
