@@ -14,6 +14,7 @@ TagManager:
   - portal
   - loader
   - player
+  - deside
   layers:
   - Default
   - TransparentFX

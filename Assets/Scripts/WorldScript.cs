@@ -33,18 +33,4 @@ public class WorldScript : MonoBehaviour {
 	// Update is called once per frame
     void Update () {
 	}
-
-    void OnTriggerEnter(Collider other) {
-        if (other.gameObject.tag == "loader" && other.gameObject.tag == "player") {
-            for (int i = 0; i < 5; i++) {
-                if (WorldScript.load < WorldScript.lenght) {
-                    WorldScript.load++;
-                    clone = Instantiate(prefabs[Random.Range(1, 11)], new Vector3(Random.Range(-20, 20), Random.Range(-20, 20), WorldScript.load * 44.3f), Quaternion.identity);
-                }
-                if (WorldScript.load == WorldScript.lenght) {
-                    clone = Instantiate(prefabs[12], new Vector3(Random.Range(-20, 20), Random.Range(-20, 20), WorldScript.load * 44.3f), Quaternion.identity);
-                }
-            }
-        }
-    }
 }
