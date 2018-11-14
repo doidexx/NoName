@@ -96,8 +96,7 @@ public class PlayerS2 : MonoBehaviour {
 			movingR = false;
 		}
 		
-		////////////////////////////////////Stopping on the Left Track/////////////////////////////////////////
-        
+		////////////////////////////////////Stopping on the Left Track//////////////////////////////////////////
         if (transform.position.x <= l + 0.2f) {
             movingL = false;
 			centerT = false;
@@ -127,9 +126,12 @@ public class PlayerS2 : MonoBehaviour {
         if (other.gameObject.CompareTag("loader")) {
             if (WorldScript.load < WorldScript.lenght) {
                 WorldScript.load++;
+				other.gameObject.SetActive(false);
                 clone = Instantiate(prefabs[Random.Range(1, 11)], new Vector3(Random.Range(-20, 20), Random.Range(-20, 20), WorldScript.load * 44.3f), Quaternion.identity);
-            }
+				Destroy(other.gameObject);
+			}
             if (WorldScript.load == WorldScript.lenght) {
+				other.gameObject.SetActive(false);
                 clone = Instantiate(prefabs[12], new Vector3(Random.Range(-20, 20), Random.Range(-20, 20), WorldScript.load * 44.3f), Quaternion.identity);
             }
 			other.gameObject.SetActive(false);
