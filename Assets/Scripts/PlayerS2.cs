@@ -31,30 +31,36 @@ public class PlayerS2 : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Space) && onFloor && !jumping) {
 			jumping = true;
         }
-        if (!deciding) {
-			if (jumping) {
-				jumpT += Time.deltaTime;
-					if (!wallR) {
-						jumpNum = 2;
-						grav = 16f;
-					} else {
-                    	grav = 9.8f;
-						if (leftT) {
-							jumpNum = 6;
-						}
-						if (rightT) {
-							jumpNum = 7;
-						}
-					}
-					speed = 30f;
-				}
-        	    playerAni.SetInteger("state", jumpNum);
-		} else {
+        ////////////////////////////////////Deciding which jump will be donw when/////////////////////////////
+        if (deciding) {
             jumpNum = 10;
             speed = 5f;
+            if (jumping) {
+                deciding = false;
+            }
+        } else {
+            if (!wallR) {
+                jumpNum = 2;
+                grav = 16f;
+            } else {
+                grav = 9.8f;
+                if (leftT) {
+                    jumpNum = 6;
+                }
+                if (rightT) {
+                    jumpNum = 7;
+                }
+            }
+
+		}
+        ///////////////////////////////////Jumping////////////////////////////////////////////////////////////
+        if (jumping) {
+            jumpT += Time.deltaTime;
+            speed = 30f;
+            playerAni.SetInteger("state", jumpNum);
         }
-		///////////////////////////////////Get S to slide/////////////////////////////////////////////////////
-		if (Input.GetKeyDown(KeyCode.S) && onFloor) {
+        ///////////////////////////////////Get S to slide/////////////////////////////////////////////////////
+        if (Input.GetKeyDown(KeyCode.S) && onFloor) {
 			sliding = true;
         }
 		if (sliding) {
@@ -124,19 +130,24 @@ public class PlayerS2 : MonoBehaviour {
 			falling = false;
         }
         if (other.gameObject.CompareTag("loader")) {
-            if (WorldScript.load < WorldScript.lenght) {
-                WorldScript.load++;
-				other.gameObject.SetActive(false);
-                clone = Instantiate(prefabs[Random.Range(1, 11)], new Vector3(Random.Range(-20, 20), Random.Range(-20, 20), WorldScript.load * 44.3f), Quaternion.identity);
-				Destroy(other.gameObject);
-			}
-            if (WorldScript.load == WorldScript.lenght) {
-				other.gameObject.SetActive(false);
-                clone = Instantiate(prefabs[12], new Vector3(Random.Range(-20, 20), Random.Range(-20, 20), WorldScript.load * 44.3f), Quaternion.identity);
+            if (WorldScript.load <= WorldScript.lenght){
+                if (WorldScript.load < WorldScript.lenght) {
+                    WorldScript.load++;
+                    other.gameObject.SetActive(false);
+                    clone = Instantiate(prefabs[Random.Range(1, 11)], new Vector3(Random.Range(-20, 20), Random.Range(-20, 20), WorldScript.load * 44.3f), Quaternion.identity);
+                    Destroy(other.gameObject);
+                }
+                if (WorldScript.load == WorldScript.lenght) {
+                    other.gameObject.SetActive(false);
+                    clone = Instantiate(prefabs[12], new Vector3(Random.Range(-20, 20), Random.Range(-20, 20), WorldScript.load * 44.3f), Quaternion.identity);
+                    WorldScript.load++;                }
+                other.gameObject.SetActive(false);
             }
-			other.gameObject.SetActive(false);
         }
-	}
+        if (other.gameObject.tag == "deside") {
+            deciding = true;
+        }
+    }
 	void OnTriggerExit(Collider other){
         if (other.gameObject.tag == "floor") {
             onFloor = false;
@@ -160,9 +171,6 @@ public class PlayerS2 : MonoBehaviour {
                 wallR = true;
 			}
 			Debug.Log("ready!");
-		}
-		if (other.gameObject.tag == "deside") {
-			deciding = true;
 		}
 	}
 	
