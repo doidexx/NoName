@@ -14,7 +14,7 @@ public class Cam : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		// Camera follows the player
-		transform.position = Vector3.Lerp(transform.position ,new Vector3(0, offsetY, target.position.z - offsetZ), 0.5f);
+		transform.position = Vector3.Lerp(transform.position ,new Vector3(0, target.position.y + offsetY, target.position.z - offsetZ), 0.5f);
 		transform.LookAt(target.position);
 	}
 }
